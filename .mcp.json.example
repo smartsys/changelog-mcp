@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "changelog": {
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/smartsys/changelog-mcp", "changelog-mcp"],
+      "env": {
+        "CHANGELOG_MCP_CONFIG": "./documentation/changelog/changelog-mcp-config.json"
+      }
+    }
+  }
+}

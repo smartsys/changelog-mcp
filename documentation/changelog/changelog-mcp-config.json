@@ -1,0 +1,35 @@
+{
+  "format": "smart",
+  "store": {
+    "file": "changelog.jsonl",
+    "path": "./documentation/changelog"
+  },
+  "changelog": {
+    "file": "CHANGELOG.md",
+    "path": "./",
+    "encoding": "utf-8",
+    "entrySpacing": 2,
+    "includePrivate": false
+  },
+  "fullChangelog": {
+    "enabled": true,
+    "file": "CHANGELOG-full.md",
+    "path": "./documentation/changelog",
+    "includePrivate": false
+  },
+  "versioning": {
+    "mode": "semver",
+    "prefix": "",
+    "fixedMajor": null,
+    "fixedMinor": null
+  },
+  "backup": {
+    "enabled": true,
+    "path": "./documentation/changelog/backup",
+    "interval": "daily",
+    "retention": 30,
+    "fileFormat": "changelog-{date}.jsonl"
+  },
+  "dateFormat": "YYYY-MM-DD",
+  "language": "de"
+}

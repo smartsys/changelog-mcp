@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "changelog-mcp"
+version = "0.1.0"
+description = "Universeller MCP-Server für Changelog-Management (JSONL-Store als Quelle der Wahrheit, Markdown-Generierung)"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Dirkstar" }]
+keywords = ["mcp", "changelog", "keep-a-changelog", "conventional-commits"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Version Control",
+    "Topic :: Software Development :: Documentation",
+]
+
+# Dependencies von Hand gepinnt (kein pip freeze).
+dependencies = [
+    "mcp>=1.9.0,<2",
+    "pydantic>=2.5,<3",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0,<9",
+    "ruff>=0.6,<1",
+    "mypy>=1.11,<2",
+]
+
+[project.urls]
+Homepage = "https://github.com/smartsys/changelog-mcp"
+Repository = "https://github.com/smartsys/changelog-mcp"
+Issues = "https://github.com/smartsys/changelog-mcp/issues"
+
+[project.scripts]
+changelog-mcp = "changelog_mcp.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/changelog_mcp"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+# E/W: pycodestyle, F: pyflakes, I: import-Sortierung, UP: pyupgrade, B: bugbear
+select = ["E", "W", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src/changelog_mcp"]
+# Löst die Alias-Felder auf (entry_ids vs. entryIds), sonst meldet mypy
+# die Konstruktoraufrufe der Records als unbekannte Keyword-Argumente.
+plugins = ["pydantic.mypy"]

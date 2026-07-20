@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Test / Tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+
+# Lokale Umgebung / Secrets
+.env
+
+# Claude Code: lokale Einstellungen bleiben privat
+.claude/settings.local.json
+
+# Lokales Dogfood-Setup: zeigt mit "--from ." auf den Arbeitsstand und taugt
+# nicht als Nutzer-Beispiel. Versioniert wird stattdessen .mcp.json.example.
+.mcp.json
+
+# Interner Doku-Ordner NICHT auf GitHub übertragen — projektspezifisch
+# (Store, Dogfood-Changelogs, Spec). Kein Nutzer-Template.
+# Ausnahme: changelog-mcp-config.json — die soll öffentlich sichtbar sein
+# (explizite Beispiel-Config, auf die .mcp.json via CHANGELOG_MCP_CONFIG zeigt).
+# Muster: jede Ebene erst un-ignorieren, dann die eine Datei wieder einschließen.
+/documentation/*
+!/documentation/changelog/
+/documentation/changelog/*
+!/documentation/changelog/changelog-mcp-config.json
+!/documentation/assets/
+/documentation/assets/*
+!/documentation/assets/hero.jpg
+
+# Interne KI-Konfiguration NICHT übertragen (Claude Code).
+# Ausnahme: der Changelog-Skill — den brauchen die Nutzer.
+# Muster: jede Ebene erst un-ignorieren, dann den einen Ordner wieder einschließen.
+/.claude/*
+!/.claude/skills/
+/.claude/skills/*
+!/.claude/skills/changelog/
+/CLAUDE.md
+
+# Bewusst versioniert (öffentlich sichtbar):
+#   .mcp.json.example — Vorlage für das MCP-Client-Setup der Nutzer
+#   CHANGELOG.md      — kuratierter öffentlicher Changelog (Root)
+#   SECURITY.md       — Sicherheitsmodell und Meldeweg
